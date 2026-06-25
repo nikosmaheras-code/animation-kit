@@ -1,73 +1,86 @@
-# Motion Skills
+# Animation Kit
 
-A pair of [Claude Code](https://claude.com/claude-code) **skills** for working with
-motion across the design↔code boundary: **Figma Motion** (the native timeline
-animation feature shipped at Config 2026) and **Motion** (`motion.dev` /
-`motion/react`, formerly Framer Motion) — the library Figma Motion's React export
-targets. The two are built as a matched pair: their controls map **1:1**.
+A **curated [Claude Code](https://claude.com/claude-code) skills registry** for motion
+& animation. Clone it, install the approved set, and your agent gains a vetted,
+shareable animation toolkit. Built to **grow over time** — add a skill, run one script,
+the registry regenerates.
 
-## What's in here
+Today it ships the motion design↔code pair:
+- **`figma-motion`** — design/reason about animation inside **Figma Motion** (the native
+  timeline feature from Config 2026).
+- **`motion-dev`** — author web/React animation in code with **Motion** (`motion.dev` /
+  `motion/react`, formerly Framer Motion) — the library Figma Motion exports to.
 
-```
-skills/
-├── figma-motion/      design & reason about animation INSIDE Figma Motion
-│   ├── SKILL.md
-│   └── references/    config-2026 · timeline-and-keyframes · easing-and-springs ·
-│                      presets-and-properties · agent-prompting ·
-│                      components-variables-handoff · motion-dev-react-export ·
-│                      advanced-and-limits
-└── motion-dev/        author web/React animation in code with motion.dev
-    ├── SKILL.md
-    └── references/    core-api · transitions-easing-springs ·
-                       keyframes-variants-stagger · svg-and-paths ·
-                       figma-parity-and-handoff
-docs/
-└── figma-motion-reference.md   condensed standalone reference
-```
+Their controls map **1:1**, so the kit covers the full loop: design in Figma → author or
+extract in code.
 
-## The motion workflow these cover
-
-| Layer | Skill | Direction |
-|---|---|---|
-| **Design / understand** the native Motion feature | `figma-motion` | concept |
-| **Author** motion in code (React/web) | `motion-dev` | code-native |
-| **Author** motion *onto* the Figma canvas via `use_figma` | `figma-use-motion`¹ | code → Figma |
-| **Extract** Figma motion *out to* production code | `figma-implement-motion`¹ | Figma → code |
-
-¹ Ships with the official Figma MCP plugin — not included here; referenced for routing.
-
-## Figma Motion ↔ motion.dev control parity
-
-| Figma Motion control | `motion/react` |
-|---|---|
-| Timeline keyframes (per property) | array values + `transition.times` + `ease[]` |
-| Presets / animated components | `variants` objects |
-| 8 Bézier easings | named eases + `ease:[x1,y1,x2,y2]` (Back ↔ `backIn/backOut/backInOut`) |
-| Springs (stiffness/damping/mass + **Bounce**) | `type:"spring"` `{stiffness,damping,mass}` or `{bounce,visualDuration}` |
-| Sequencing / stagger | `stagger()` / `staggerChildren` / `delayChildren` |
-| Once / Loop / Ping-pong | `repeat` + `repeatType: loop/reverse/mirror` |
-| Trim paths | `motion.path` + `pathLength/pathOffset/pathSpacing` |
-
-## Install
-
-Drop a skill into your Claude Code skills directory:
+## Quick start
 
 ```bash
-# user-level (all projects)
-cp -R skills/figma-motion skills/motion-dev ~/.claude/skills/
+git clone <repo-url> && cd animation-kit   # (repo name TBD)
 
-# or project-level
-cp -R skills/figma-motion skills/motion-dev .claude/skills/
+# install all APPROVED skills into ~/.claude/skills
+./scripts/install.sh
+
+# or pick specific skills / a project target
+./scripts/install.sh figma-motion motion-dev
+./scripts/install.sh --target .claude/skills
 ```
 
 Claude auto-invokes a skill when a task matches its description; you can also call it
 explicitly (`/figma-motion`, `/motion-dev`).
 
-## Sources
+## Repository layout
 
-Built from Figma Learn's Motion documentation set + the Figma Config 2026 announcement
-and the [motion.dev](https://motion.dev) docs (API verified against current docs).
+```
+.
+├── README.md                  ← you are here
+├── REGISTRY.md                ← generated index of all skills (status, version, tags)
+├── registry.json              ← machine-readable registry (source = each skill.json)
+├── CONTRIBUTING.md            ← how to add a skill + the approval bar
+├── scripts/
+│   ├── build-registry.mjs     ← regenerate registry.json + REGISTRY.md (zero deps)
+│   └── install.sh             ← install approved/selected skills into a skills dir
+├── skills/
+│   └── <id>/
+│       ├── SKILL.md           ← the skill (frontmatter: name, description)
+│       ├── skill.json         ← registry metadata (status, version, tags, sources)
+│       └── references/        ← progressive-disclosure docs
+└── docs/
+    └── figma-motion-reference.md   ← condensed standalone reference
+```
+
+## How the registry works
+
+- **Source of truth** = each `skills/<id>/skill.json`.
+- `registry.json` + `REGISTRY.md` are **generated** from those by
+  `node scripts/build-registry.mjs` — never hand-edited.
+- Every skill carries a **status**; only `approved` skills install by default. That's
+  the curation layer that makes this safe to share.
+
+Add a skill → see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## The motion skill map
+
+| Layer | Skill | In this kit? |
+|---|---|---|
+| **Design** motion in Figma | `figma-motion` | ✅ |
+| **Author** motion in code (React/web) | `motion-dev` | ✅ |
+| **Author** motion onto the Figma canvas (`use_figma`) | `figma-use-motion` | ships with Figma MCP plugin |
+| **Extract** Figma motion → code | `figma-implement-motion` | ships with Figma MCP plugin |
+
+## Figma Motion ↔ motion.dev control parity
+
+| Figma Motion | `motion/react` |
+|---|---|
+| Timeline keyframes (per property) | array values + `transition.times` + `ease[]` |
+| Presets / animated components | `variants` |
+| 8 Bézier easings | named eases + `ease:[x1,y1,x2,y2]` |
+| Springs (stiffness/damping/mass + **Bounce**) | `type:"spring"` `{stiffness,damping,mass}` or `{bounce,visualDuration}` |
+| Sequencing / stagger | `stagger()` / `staggerChildren` |
+| Once / Loop / Ping-pong | `repeat` + `repeatType: loop/reverse/mirror` |
+| Trim paths | `motion.path` + `pathLength` |
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).

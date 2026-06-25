@@ -1,0 +1,17 @@
+{
+  "id": "figma-motion",
+  "title": "Figma Motion (Config 2026)",
+  "description": "Design and reason about animation natively in Figma Motion — the timeline-based animation feature shipped in open beta at Config 2026. Covers the Motion timeline, keyframes, presets, easing, springs, animated components, motion variables, agent prompting, and Dev Mode export.",
+  "version": "1.0.0",
+  "status": "approved",
+  "category": "animation",
+  "tags": ["figma", "motion", "animation", "design", "config-2026", "timeline", "easing", "springs"],
+  "entry": "SKILL.md",
+  "owner": "nikosmaheras-code",
+  "updated": "2026-06-25",
+  "sources": [
+    "https://help.figma.com/hc/en-us/articles/39582753756695-What-s-new-from-Config-2026",
+    "https://www.figma.com/blog/introducing-figma-motion/",
+    "https://help.figma.com/hc/en-us/sections/41236726027287-Motion-design-fundamentals-collection"
+  ]
+}

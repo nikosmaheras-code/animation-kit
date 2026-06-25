@@ -1,0 +1,17 @@
+{
+  "id": "motion-dev",
+  "title": "Motion (motion.dev / motion/react)",
+  "description": "Author web/React animation in code with Motion (motion.dev, the motion/react package, formerly Framer Motion) — the library Figma Motion's React export targets. Controls map 1:1 to Figma Motion: springs, easing, keyframes, variants, stagger, repeat/mirror, gestures, layout, and SVG path drawing.",
+  "version": "1.0.0",
+  "status": "approved",
+  "category": "animation",
+  "tags": ["motion.dev", "framer-motion", "react", "animation", "code", "springs", "variants", "svg"],
+  "entry": "SKILL.md",
+  "owner": "nikosmaheras-code",
+  "updated": "2026-06-25",
+  "sources": [
+    "https://motion.dev/docs/react-motion-component",
+    "https://motion.dev/docs/react-transitions",
+    "https://motion.dev/docs/figma"
+  ]
+}
