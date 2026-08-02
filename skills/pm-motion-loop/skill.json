@@ -1,0 +1,17 @@
+{
+  "id": "pm-motion-loop",
+  "title": "PM Motion Optimization Loop (self-learning)",
+  "description": "Self-learning lint → edit → verify → learn cycle for optimizing Figma Motion timelines against the production Polymarket app kit (pm-app-motion). Deterministic linter (motion-lint.mjs) scores springs/durations/tracks against the damping census and timing laws; edits via use_figma; cheap export_video verification; every run appends verified findings to LEARNINGS.md so the next run starts smarter.",
+  "version": "1.0.0",
+  "status": "approved",
+  "category": "animation",
+  "tags": ["polymarket", "figma-motion", "self-learning", "lint", "springs", "timeline", "optimization", "app-native"],
+  "entry": "SKILL.md",
+  "owner": "nikosmaheras-code",
+  "updated": "2026-07-22",
+  "sources": [
+    "skills/pm-app-motion (constants)",
+    "LEARNINGS.md seed: MLS Livetrade authoring session 2026-07-16",
+    "~/creative-ops/livetrade-treatments/figma-production-map.md"
+  ]
+}

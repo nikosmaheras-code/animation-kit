@@ -1,0 +1,94 @@
+{
+  "$source": "pm-app-motion SKILL.md — extracted 2026-07-22 from Polymarket/mobile-app; Squads wave absorbed 2026-08-02 (PRs #2625/#2647/#2671). If lint results disagree with current app source, update HERE and log it in LEARNINGS.md.",
+  "dampingCensus": { "min": 0.78, "max": 0.92 },
+  "bounceBand": {
+    "min": 0.5,
+    "max": 0.65,
+    "reservedFor": "money moments only — bet landing pop (0.55), cash-out collapse (0.6)"
+  },
+  "timingMs": {
+    "micro": [150, 250],
+    "transition": [300, 500],
+    "hardMax": 550,
+    "knownFastOutliers": { "buttonPressDown": 50, "buttonRelease": 100 }
+  },
+  "springs": {
+    "snappy": { "mass": 1, "stiffness": 350, "damping": 30, "staggerS": 0.015 },
+    "smooth": { "mass": 1, "stiffness": 170, "damping": 26, "staggerS": 0.05 },
+    "bouncy": { "mass": 1, "stiffness": 300, "damping": 22, "staggerS": 0.04 },
+    "microControl": { "stiffness": 600 }
+  },
+  "namedDampingRatios": {
+    "bottomBar": 0.9,
+    "rootTrading": [0.85, 0.88],
+    "pager": 0.82,
+    "gridRelease": 0.8,
+    "gridZoom": 0.92,
+    "modalPresent": 0.88,
+    "slideSheet": [0.86, 0.88],
+    "flightLandingPop": 0.55,
+    "cashOutCollapse": 0.6,
+    "cashOutRestore": 0.85,
+    "squadsAvatarBubble": 0.78,
+    "squadsAvatarFlair": 0.78
+  },
+  "knownDurationsMs": {
+    "betFlight": 500,
+    "modalPresentIn": 340,
+    "modalPresentOut": 280,
+    "slidePresent": 480,
+    "slideDismiss": 360,
+    "pickToTradingMain": 420,
+    "pickToTradingSettle": 280,
+    "pickASideExit": 250,
+    "gridReleaseSpring": 550,
+    "gridZoom": 320,
+    "introEnter": 300,
+    "introExit": 200,
+    "tradingToIntroExit": 240,
+    "avatarBubbleIn": 400,
+    "avatarBubblePopOut": 180,
+    "avatarFlairIn": 400,
+    "avatarFlairOut": 220
+  },
+  "namedScales": {
+    "buttonPressDown": 0.96,
+    "betFlightPeak": 2.0,
+    "betFlightEnd": 0.5,
+    "landingPop": 1.15,
+    "cashOutScrunch": 0.9,
+    "cashOutCollapse": 0.6,
+    "positionEnlarge": 1.14,
+    "buttonExitTransform": 0.85,
+    "avatarFlairEntryFrom": 0.92
+  },
+  "ambientDrift": {
+    "$source": "USSquadsAvatarBubbleGroup.swift Motion enum (PR #2671, dormant motion — off by default, honors Reduce Motion)",
+    "baseSpeedRadPerS": 0.45,
+    "perBubbleSpeedVariance": { "x": [0.85, 1.15], "y": [0.8, 1.12] },
+    "gapShare": 0.48,
+    "maxAmplitudeFraction": 0.053,
+    "amplitudeDivisor": 1.4142136,
+    "swellFraction": 0.027,
+    "swellSpeedRadPerS": { "x": 0.32, "y": 0.26 },
+    "dualSineMix": [0.62, 0.38],
+    "freqMultipliers": { "bubble": [1.87, 2.13], "swell": [1.93, 2.31] },
+    "goldenRatioSeed": 0.618034,
+    "amplitudeEaseRatePerS": 2.5
+  },
+  "scrollMorphHeader": {
+    "$source": "SquadsSettingsNavigationHeader.swift + USSquadsSettingsViewController.swift (PRs #2647/#2671)",
+    "clusterKeyframe": [0, 0.5],
+    "titleKeyframe": [0.1, 1],
+    "collapsedClusterSizePt": 32,
+    "dividerAlpha": "= progress",
+    "shadowMaxOpacity": 0.08,
+    "changeNameFadeOutEnd": 0.3333,
+    "flickVelocityThresholdPtPerMs": 0.3,
+    "snapRule": "flick commits in its direction; slow release → nearest end (midpoint); skip when content can't complete collapse"
+  },
+  "renderLandmines": {
+    "unsupportedTracks": ["fills", "effects"],
+    "note": "fills[i] COLOR and effects[i] tracks persist on the node and preview in-editor but server export_video renders IGNORE them — design color/glow changes as layer crossfades or scale pop-ins of pre-styled twins (verified 2026-07-16)."
+  }
+}

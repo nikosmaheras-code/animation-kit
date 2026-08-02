@@ -1,0 +1,15 @@
+{
+  "id": "pm-app-motion",
+  "title": "Polymarket App Native Motion Kit",
+  "description": "Exact spring/timing/haptic constants extracted from the Polymarket mobile-app source, organized by action and screen flow — button press, price odometer, bet-placement flight, cash out, phase/screen transitions, grid morph, the damping census (ζ0.78–0.92, bounce reserved for money moments), and the enforced haptic map. Use to make static designs, motion comps, or creatives feel app-native.",
+  "version": "1.0.0",
+  "status": "approved",
+  "category": "animation",
+  "tags": ["polymarket", "ios", "springs", "haptics", "motion", "app-native", "livetrade", "design-system"],
+  "entry": "SKILL.md",
+  "owner": "nikosmaheras-code",
+  "updated": "2026-07-22",
+  "sources": [
+    "github.com/Polymarket/mobile-app — USViews/LiveTrade/Animation/*, CoreComponents/AnimatedLabel/*, CUIScalablePressInteraction.swift, docs/guides/ui-conventions.md"
+  ]
+}

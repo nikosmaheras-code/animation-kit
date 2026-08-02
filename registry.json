@@ -2,7 +2,7 @@
   "name": "Animation Kit",
   "description": "A curated Claude Code skills registry for motion & animation.",
   "generated": "by scripts/build-registry.mjs — do not edit by hand",
-  "skillCount": 2,
+  "skillCount": 4,
   "skills": [
     {
       "id": "figma-motion",
@@ -59,6 +59,60 @@
       ],
       "path": "skills/motion-dev",
       "referenceCount": 5
+    },
+    {
+      "id": "pm-app-motion",
+      "title": "Polymarket App Native Motion Kit",
+      "description": "Exact spring/timing/haptic constants extracted from the Polymarket mobile-app source, organized by action and screen flow — button press, price odometer, bet-placement flight, cash out, phase/screen transitions, grid morph, the damping census (ζ0.78–0.92, bounce reserved for money moments), and the enforced haptic map. Use to make static designs, motion comps, or creatives feel app-native.",
+      "version": "1.0.0",
+      "status": "approved",
+      "category": "animation",
+      "tags": [
+        "polymarket",
+        "ios",
+        "springs",
+        "haptics",
+        "motion",
+        "app-native",
+        "livetrade",
+        "design-system"
+      ],
+      "entry": "SKILL.md",
+      "owner": "nikosmaheras-code",
+      "updated": "2026-07-22",
+      "sources": [
+        "github.com/Polymarket/mobile-app — USViews/LiveTrade/Animation/*, CoreComponents/AnimatedLabel/*, CUIScalablePressInteraction.swift, docs/guides/ui-conventions.md"
+      ],
+      "path": "skills/pm-app-motion",
+      "referenceCount": 0
+    },
+    {
+      "id": "pm-motion-loop",
+      "title": "PM Motion Optimization Loop (self-learning)",
+      "description": "Self-learning lint → edit → verify → learn cycle for optimizing Figma Motion timelines against the production Polymarket app kit (pm-app-motion). Deterministic linter (motion-lint.mjs) scores springs/durations/tracks against the damping census and timing laws; edits via use_figma; cheap export_video verification; every run appends verified findings to LEARNINGS.md so the next run starts smarter.",
+      "version": "1.0.0",
+      "status": "approved",
+      "category": "animation",
+      "tags": [
+        "polymarket",
+        "figma-motion",
+        "self-learning",
+        "lint",
+        "springs",
+        "timeline",
+        "optimization",
+        "app-native"
+      ],
+      "entry": "SKILL.md",
+      "owner": "nikosmaheras-code",
+      "updated": "2026-07-22",
+      "sources": [
+        "skills/pm-app-motion (constants)",
+        "LEARNINGS.md seed: MLS Livetrade authoring session 2026-07-16",
+        "~/creative-ops/livetrade-treatments/figma-production-map.md"
+      ],
+      "path": "skills/pm-motion-loop",
+      "referenceCount": 0
     }
   ]
 }
